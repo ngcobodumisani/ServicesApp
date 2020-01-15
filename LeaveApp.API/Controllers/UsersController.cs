@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using LeaveApp.API.Data;
 using LeaveApp.API.Dtos;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,9 +12,10 @@ namespace LeaveApp.API.Controllers
 {
 
 
-    // [Authorize]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Route("api/[controller]")]
     [ApiController]
+
     public class UsersController : ControllerBase
     {
 

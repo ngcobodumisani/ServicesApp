@@ -59,6 +59,7 @@ namespace LeaveApp.API
                     ValidateAudience = false
                 };
             });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -92,7 +93,7 @@ namespace LeaveApp.API
             app.UseRouting();
 
             app.UseAuthorization();
-
+            //app.UseMvc();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
