@@ -24,5 +24,9 @@ namespace LeaveApp.API.Dtos
         public string PhotoUrl { get; set; }
 
         public ICollection<PhotosForDetailedDto> Photos { get; set; }
+
+        public ICollection<LeaveForListDto> Leaves { get; set; }
+
+        public ICollection<LeaveAvailableDto> LeaveAvailables { get; set; }
     }
 }

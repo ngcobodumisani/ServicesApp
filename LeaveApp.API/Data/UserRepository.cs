@@ -25,13 +25,13 @@ namespace LeaveApp.API.Data
 
         public async Task<User> GetUser(int id)
         {
-            var user = await _context.Users.Include(r => r.Photos).FirstOrDefaultAsync(u => u.Id == id);
+            var user = await _context.Users.Include(r => r.Photos).Include(r => r.Leaves).Include(r => r.LeaveAvailables).FirstOrDefaultAsync(u => u.Id == id);
             return user;
         }
 
         public async Task<IEnumerable<User>> GetUsers()
         {
-            var users = await _context.Users.Include(r => r.Photos).ToListAsync();
+            var users = await _context.Users.Include(r => r.Photos).Include(r => r.Leaves).Include(r => r.LeaveAvailables).ToListAsync();
             return users;
         }
 

@@ -3,14 +3,16 @@ using System;
 using LeaveApp.API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LeaveApp.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20200115100409_LeaveAdditional")]
+    partial class LeaveAdditional
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,9 +36,6 @@ namespace LeaveApp.API.Migrations
                     b.Property<int>("HR")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("LeaveType")
-                        .HasColumnType("TEXT");
-
                     b.Property<int>("Manager")
                         .HasColumnType("INTEGER");
 
@@ -46,7 +45,7 @@ namespace LeaveApp.API.Migrations
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("TEXT");
 
-                    b.Property<bool>("Status")
+                    b.Property<string>("Status")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("TotalNumberOfDays")
@@ -63,28 +62,6 @@ namespace LeaveApp.API.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Leaves");
-                });
-
-            modelBuilder.Entity("LeaveApp.API.Models.LeaveAvailable", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("AvailableNumberOfDays")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("LeaveType")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("LeaveAvailables");
                 });
 
             modelBuilder.Entity("LeaveApp.API.Models.Photo", b =>
@@ -186,15 +163,6 @@ namespace LeaveApp.API.Migrations
                 {
                     b.HasOne("LeaveApp.API.Models.User", "User")
                         .WithMany("Leaves")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("LeaveApp.API.Models.LeaveAvailable", b =>
-                {
-                    b.HasOne("LeaveApp.API.Models.User", "User")
-                        .WithMany("LeaveAvailables")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

@@ -15,5 +15,7 @@ namespace LeaveApp.API.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Photo> Photos { get; set; }
         public DbSet<Leave> Leaves { get; set; }
+        public DbSet<LeaveAvailable> LeaveAvailables { get; set; }
+
     }
 }

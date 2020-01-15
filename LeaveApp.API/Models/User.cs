@@ -25,7 +25,7 @@ namespace LeaveApp.API.Models
         public string Role { get; set; }
         public ICollection<Photo> Photos { get; set; }
         public ICollection<Leave> Leaves { get; set; }
-
+        public ICollection<LeaveAvailable> LeaveAvailables { get; set; }
 
     }
 }
